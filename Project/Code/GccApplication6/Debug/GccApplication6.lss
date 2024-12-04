@@ -1,0 +1,618 @@
+
+GccApplication6.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         0000000a  00800100  00000390  00000424  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000390  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000008  0080010a  0080010a  0000042e  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  0000042e  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000460  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000070  00000000  00000000  0000049c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000aaf  00000000  00000000  0000050c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 00000789  00000000  00000000  00000fbb  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   000004b1  00000000  00000000  00001744  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000000e0  00000000  00000000  00001bf8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000473  00000000  00000000  00001cd8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    0000039e  00000000  00000000  0000214b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000078  00000000  00000000  000024e9  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 e9       	ldi	r30, 0x90	; 144
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	aa 30       	cpi	r26, 0x0A	; 10
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	aa e0       	ldi	r26, 0x0A	; 10
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a2 31       	cpi	r26, 0x12	; 18
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 25 01 	call	0x24a	; 0x24a <main>
+  9e:	0c 94 c6 01 	jmp	0x38c	; 0x38c <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <init>:
+int display_mode = 0; // 0 for Celsius, 1 for Fahrenheit
+int alarm_triggered = 0;
+
+void init() {
+	// Set data direction registers
+	DDRC &= ~(1<<PC0 | 1<<PC1 | 1<<PC2 | 1<<PC3 | 1<<PC4); // Set PC0-PC4 as input for buttons
+  a6:	87 b1       	in	r24, 0x07	; 7
+  a8:	80 7e       	andi	r24, 0xE0	; 224
+  aa:	87 b9       	out	0x07, r24	; 7
+	DDRC |= (1<<PC5); // Set PC5 as output for alarm LED
+  ac:	3d 9a       	sbi	0x07, 5	; 7
+	DDRD = 0xFF; // Set PORTD as output for 7-segment display
+  ae:	8f ef       	ldi	r24, 0xFF	; 255
+  b0:	8a b9       	out	0x0a, r24	; 10
+	DDRB = 0xFF; // Set PB0-PB7 as output for display digit control and LEDs
+  b2:	84 b9       	out	0x04, r24	; 4
+
+	// Enable pull-up resistors for buttons
+	PORTC |= (1<<PC0 | 1<<PC1 | 1<<PC2 | 1<<PC3 | 1<<PC4);
+  b4:	88 b1       	in	r24, 0x08	; 8
+  b6:	8f 61       	ori	r24, 0x1F	; 31
+  b8:	88 b9       	out	0x08, r24	; 8
+
+	// Set initial state
+	PORTC &= ~(1<<PC5); // Turn off alarm LED
+  ba:	45 98       	cbi	0x08, 5	; 8
+
+
+	// Enable interrupts
+	sei();
+  bc:	78 94       	sei
+  be:	08 95       	ret
+
+000000c0 <displayDigit>:
+}
+
+void displayDigit(uint8_t digit, uint8_t value) {
+  c0:	cf 93       	push	r28
+  c2:	df 93       	push	r29
+  c4:	cd b7       	in	r28, 0x3d	; 61
+  c6:	de b7       	in	r29, 0x3e	; 62
+  c8:	2a 97       	sbiw	r28, 0x0a	; 10
+  ca:	0f b6       	in	r0, 0x3f	; 63
+  cc:	f8 94       	cli
+  ce:	de bf       	out	0x3e, r29	; 62
+  d0:	0f be       	out	0x3f, r0	; 63
+  d2:	cd bf       	out	0x3d, r28	; 61
+	// Array for 7-segment display digits (common cathode)
+	uint8_t digits[10] = {
+  d4:	9a e0       	ldi	r25, 0x0A	; 10
+  d6:	e0 e0       	ldi	r30, 0x00	; 0
+  d8:	f1 e0       	ldi	r31, 0x01	; 1
+  da:	de 01       	movw	r26, r28
+  dc:	11 96       	adiw	r26, 0x01	; 1
+  de:	01 90       	ld	r0, Z+
+  e0:	0d 92       	st	X+, r0
+  e2:	9a 95       	dec	r25
+  e4:	e1 f7       	brne	.-8      	; 0xde <displayDigit+0x1e>
+		0b00000111, // 7
+		0b01111111, // 8
+		0b01101111  // 9
+	};
+
+	PORTB = (1 << digit);
+  e6:	21 e0       	ldi	r18, 0x01	; 1
+  e8:	30 e0       	ldi	r19, 0x00	; 0
+  ea:	02 c0       	rjmp	.+4      	; 0xf0 <displayDigit+0x30>
+  ec:	22 0f       	add	r18, r18
+  ee:	33 1f       	adc	r19, r19
+  f0:	8a 95       	dec	r24
+  f2:	e2 f7       	brpl	.-8      	; 0xec <displayDigit+0x2c>
+  f4:	25 b9       	out	0x05, r18	; 5
+	PORTD = digits[value];
+  f6:	e1 e0       	ldi	r30, 0x01	; 1
+  f8:	f0 e0       	ldi	r31, 0x00	; 0
+  fa:	ec 0f       	add	r30, r28
+  fc:	fd 1f       	adc	r31, r29
+  fe:	e6 0f       	add	r30, r22
+ 100:	f1 1d       	adc	r31, r1
+ 102:	80 81       	ld	r24, Z
+ 104:	8b b9       	out	0x0b, r24	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 106:	8f e3       	ldi	r24, 0x3F	; 63
+ 108:	9c e9       	ldi	r25, 0x9C	; 156
+ 10a:	01 97       	sbiw	r24, 0x01	; 1
+ 10c:	f1 f7       	brne	.-4      	; 0x10a <displayDigit+0x4a>
+ 10e:	00 c0       	rjmp	.+0      	; 0x110 <displayDigit+0x50>
+ 110:	00 00       	nop
+	_delay_ms(10);
+	PORTB = 0x00;
+ 112:	15 b8       	out	0x05, r1	; 5
+}
+ 114:	2a 96       	adiw	r28, 0x0a	; 10
+ 116:	0f b6       	in	r0, 0x3f	; 63
+ 118:	f8 94       	cli
+ 11a:	de bf       	out	0x3e, r29	; 62
+ 11c:	0f be       	out	0x3f, r0	; 63
+ 11e:	cd bf       	out	0x3d, r28	; 61
+ 120:	df 91       	pop	r29
+ 122:	cf 91       	pop	r28
+ 124:	08 95       	ret
+
+00000126 <displayNumber>:
+
+void displayNumber(int num) {
+ 126:	cf 93       	push	r28
+ 128:	df 93       	push	r29
+ 12a:	ec 01       	movw	r28, r24
+	int d1 = num / 100;
+	int d2 = (num / 10) % 10;
+	int d3 = num % 10;
+
+	// Display each digit
+	displayDigit(DIGIT1, d1);
+ 12c:	64 e6       	ldi	r22, 0x64	; 100
+ 12e:	70 e0       	ldi	r23, 0x00	; 0
+ 130:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
+ 134:	80 e0       	ldi	r24, 0x00	; 0
+ 136:	0e 94 60 00 	call	0xc0	; 0xc0 <displayDigit>
+	displayDigit(DIGIT2, d2);
+ 13a:	2a e0       	ldi	r18, 0x0A	; 10
+ 13c:	30 e0       	ldi	r19, 0x00	; 0
+ 13e:	ce 01       	movw	r24, r28
+ 140:	b9 01       	movw	r22, r18
+ 142:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
+ 146:	c8 2f       	mov	r28, r24
+ 148:	cb 01       	movw	r24, r22
+ 14a:	b9 01       	movw	r22, r18
+ 14c:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
+ 150:	68 2f       	mov	r22, r24
+ 152:	81 e0       	ldi	r24, 0x01	; 1
+ 154:	0e 94 60 00 	call	0xc0	; 0xc0 <displayDigit>
+	displayDigit(DIGIT3, d3);
+ 158:	6c 2f       	mov	r22, r28
+ 15a:	82 e0       	ldi	r24, 0x02	; 2
+ 15c:	0e 94 60 00 	call	0xc0	; 0xc0 <displayDigit>
+}
+ 160:	df 91       	pop	r29
+ 162:	cf 91       	pop	r28
+ 164:	08 95       	ret
+
+00000166 <toggle_display_mode>:
+
+void toggle_display_mode() {
+	display_mode = !display_mode;
+ 166:	81 e0       	ldi	r24, 0x01	; 1
+ 168:	90 e0       	ldi	r25, 0x00	; 0
+ 16a:	20 91 0c 01 	lds	r18, 0x010C	; 0x80010c <display_mode>
+ 16e:	30 91 0d 01 	lds	r19, 0x010D	; 0x80010d <display_mode+0x1>
+ 172:	23 2b       	or	r18, r19
+ 174:	11 f0       	breq	.+4      	; 0x17a <toggle_display_mode+0x14>
+ 176:	80 e0       	ldi	r24, 0x00	; 0
+ 178:	90 e0       	ldi	r25, 0x00	; 0
+ 17a:	90 93 0d 01 	sts	0x010D, r25	; 0x80010d <display_mode+0x1>
+ 17e:	80 93 0c 01 	sts	0x010C, r24	; 0x80010c <display_mode>
+ 182:	08 95       	ret
+
+00000184 <check_alarm>:
+}
+
+void check_alarm() {
+	if (temperature > 40) {
+ 184:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <temperature>
+ 188:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <temperature+0x1>
+ 18c:	89 97       	sbiw	r24, 0x29	; 41
+ 18e:	44 f0       	brlt	.+16     	; 0x1a0 <check_alarm+0x1c>
+		PORTC |= (1<<PC5); // Turn on alarm LED
+ 190:	45 9a       	sbi	0x08, 5	; 8
+		alarm_triggered = 1;
+ 192:	81 e0       	ldi	r24, 0x01	; 1
+ 194:	90 e0       	ldi	r25, 0x00	; 0
+ 196:	90 93 0b 01 	sts	0x010B, r25	; 0x80010b <__data_end+0x1>
+ 19a:	80 93 0a 01 	sts	0x010A, r24	; 0x80010a <__data_end>
+ 19e:	08 95       	ret
+		} else {
+		PORTC &= ~(1<<PC5); // Turn off alarm LED
+ 1a0:	45 98       	cbi	0x08, 5	; 8
+		alarm_triggered = 0;
+ 1a2:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <__data_end+0x1>
+ 1a6:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <__data_end>
+ 1aa:	08 95       	ret
+
+000001ac <stop_alarm>:
+	}
+}
+
+void stop_alarm() {
+	PORTC = (1<<PC4); // Turn off alarm LED
+ 1ac:	80 e1       	ldi	r24, 0x10	; 16
+ 1ae:	88 b9       	out	0x08, r24	; 8
+	alarm_triggered = 0;
+ 1b0:	10 92 0b 01 	sts	0x010B, r1	; 0x80010b <__data_end+0x1>
+ 1b4:	10 92 0a 01 	sts	0x010A, r1	; 0x80010a <__data_end>
+ 1b8:	08 95       	ret
+
+000001ba <increment_temperature>:
+}
+
+void increment_temperature() {
+	if (temperature < 99) {
+ 1ba:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <temperature>
+ 1be:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <temperature+0x1>
+ 1c2:	83 36       	cpi	r24, 0x63	; 99
+ 1c4:	91 05       	cpc	r25, r1
+ 1c6:	3c f4       	brge	.+14     	; 0x1d6 <increment_temperature+0x1c>
+		temperature++;
+ 1c8:	01 96       	adiw	r24, 0x01	; 1
+ 1ca:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <temperature+0x1>
+ 1ce:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <temperature>
+		check_alarm();
+ 1d2:	0e 94 c2 00 	call	0x184	; 0x184 <check_alarm>
+ 1d6:	08 95       	ret
+
+000001d8 <decrement_temperature>:
+	}
+}
+
+void decrement_temperature() {
+	if (temperature > 0) {
+ 1d8:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <temperature>
+ 1dc:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <temperature+0x1>
+ 1e0:	18 16       	cp	r1, r24
+ 1e2:	19 06       	cpc	r1, r25
+ 1e4:	3c f4       	brge	.+14     	; 0x1f4 <decrement_temperature+0x1c>
+		temperature--;
+ 1e6:	01 97       	sbiw	r24, 0x01	; 1
+ 1e8:	90 93 11 01 	sts	0x0111, r25	; 0x800111 <temperature+0x1>
+ 1ec:	80 93 10 01 	sts	0x0110, r24	; 0x800110 <temperature>
+		check_alarm();
+ 1f0:	0e 94 c2 00 	call	0x184	; 0x184 <check_alarm>
+ 1f4:	08 95       	ret
+
+000001f6 <change_mode>:
+	}
+}
+
+void change_mode() {
+	mode = !mode;
+ 1f6:	81 e0       	ldi	r24, 0x01	; 1
+ 1f8:	90 e0       	ldi	r25, 0x00	; 0
+ 1fa:	20 91 0e 01 	lds	r18, 0x010E	; 0x80010e <mode>
+ 1fe:	30 91 0f 01 	lds	r19, 0x010F	; 0x80010f <mode+0x1>
+ 202:	23 2b       	or	r18, r19
+ 204:	11 f0       	breq	.+4      	; 0x20a <change_mode+0x14>
+ 206:	80 e0       	ldi	r24, 0x00	; 0
+ 208:	90 e0       	ldi	r25, 0x00	; 0
+ 20a:	90 93 0f 01 	sts	0x010F, r25	; 0x80010f <mode+0x1>
+ 20e:	80 93 0e 01 	sts	0x010E, r24	; 0x80010e <mode>
+ 212:	08 95       	ret
+
+00000214 <update_leds>:
+}
+
+void update_leds() {
+	// Turn off all LEDs
+	PORTB &= ~((1 << LED1) | (1 << LED2) | (1 << LED4));
+ 214:	85 b1       	in	r24, 0x05	; 5
+ 216:	87 7c       	andi	r24, 0xC7	; 199
+ 218:	85 b9       	out	0x05, r24	; 5
+	PORTD &= ~(1 << LED3);
+ 21a:	5f 98       	cbi	0x0b, 7	; 11
+
+	// Update LEDs based on temperature range
+	if (temperature < 15) {
+ 21c:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <temperature>
+ 220:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <temperature+0x1>
+ 224:	8f 30       	cpi	r24, 0x0F	; 15
+ 226:	91 05       	cpc	r25, r1
+ 228:	14 f4       	brge	.+4      	; 0x22e <update_leds+0x1a>
+		PORTB |= (1 << LED1);
+ 22a:	2c 9a       	sbi	0x05, 4	; 5
+ 22c:	08 95       	ret
+		} else if (temperature  < 26) {
+ 22e:	8a 31       	cpi	r24, 0x1A	; 26
+ 230:	91 05       	cpc	r25, r1
+ 232:	14 f4       	brge	.+4      	; 0x238 <update_leds+0x24>
+		PORTB |= (1 << LED2);
+ 234:	2d 9a       	sbi	0x05, 5	; 5
+ 236:	08 95       	ret
+		} else if (temperature < 36) {
+ 238:	84 32       	cpi	r24, 0x24	; 36
+ 23a:	91 05       	cpc	r25, r1
+ 23c:	14 f4       	brge	.+4      	; 0x242 <update_leds+0x2e>
+		PORTD |= (1 << LED3);
+ 23e:	5f 9a       	sbi	0x0b, 7	; 11
+ 240:	08 95       	ret
+		} else if (temperature < 41) {
+ 242:	89 97       	sbiw	r24, 0x29	; 41
+ 244:	0c f4       	brge	.+2      	; 0x248 <update_leds+0x34>
+		PORTB |= (1 << LED4);
+ 246:	2b 9a       	sbi	0x05, 3	; 5
+ 248:	08 95       	ret
+
+0000024a <main>:
+	}
+}
+
+int main(void) {
+	init();
+ 24a:	0e 94 53 00 	call	0xa6	; 0xa6 <init>
+				change_mode();
+			}
+		}
+
+		if (mode == 0) {
+			int display_temp = display_mode == 0 ? temperature : (temperature * 9 / 5) + 32;
+ 24e:	c5 e0       	ldi	r28, 0x05	; 5
+ 250:	d0 e0       	ldi	r29, 0x00	; 0
+
+int main(void) {
+	init();
+
+	while (1) {
+		if (!INCREMENT_BUTTON) {
+ 252:	30 99       	sbic	0x06, 0	; 6
+ 254:	0c c0       	rjmp	.+24     	; 0x26e <main+0x24>
+ 256:	2f ef       	ldi	r18, 0xFF	; 255
+ 258:	85 ed       	ldi	r24, 0xD5	; 213
+ 25a:	96 e0       	ldi	r25, 0x06	; 6
+ 25c:	21 50       	subi	r18, 0x01	; 1
+ 25e:	80 40       	sbci	r24, 0x00	; 0
+ 260:	90 40       	sbci	r25, 0x00	; 0
+ 262:	e1 f7       	brne	.-8      	; 0x25c <main+0x12>
+ 264:	00 c0       	rjmp	.+0      	; 0x266 <main+0x1c>
+ 266:	00 00       	nop
+			_delay_ms(140); // Debounce
+			if (!INCREMENT_BUTTON) {
+ 268:	30 9b       	sbis	0x06, 0	; 6
+				increment_temperature();
+ 26a:	0e 94 dd 00 	call	0x1ba	; 0x1ba <increment_temperature>
+			}
+		}
+		if (!DECREMENT_BUTTON) {
+ 26e:	31 99       	sbic	0x06, 1	; 6
+ 270:	0c c0       	rjmp	.+24     	; 0x28a <main+0x40>
+ 272:	2f ef       	ldi	r18, 0xFF	; 255
+ 274:	88 e5       	ldi	r24, 0x58	; 88
+ 276:	96 e0       	ldi	r25, 0x06	; 6
+ 278:	21 50       	subi	r18, 0x01	; 1
+ 27a:	80 40       	sbci	r24, 0x00	; 0
+ 27c:	90 40       	sbci	r25, 0x00	; 0
+ 27e:	e1 f7       	brne	.-8      	; 0x278 <main+0x2e>
+ 280:	00 c0       	rjmp	.+0      	; 0x282 <main+0x38>
+ 282:	00 00       	nop
+			_delay_ms(130); // Debounce
+			if (!DECREMENT_BUTTON) {
+ 284:	31 9b       	sbis	0x06, 1	; 6
+				decrement_temperature();
+ 286:	0e 94 ec 00 	call	0x1d8	; 0x1d8 <decrement_temperature>
+			}
+		}
+		if (!TOGGLE_BUTTON) {
+ 28a:	32 99       	sbic	0x06, 2	; 6
+ 28c:	0c c0       	rjmp	.+24     	; 0x2a6 <main+0x5c>
+ 28e:	2f ef       	ldi	r18, 0xFF	; 255
+ 290:	81 ee       	ldi	r24, 0xE1	; 225
+ 292:	94 e0       	ldi	r25, 0x04	; 4
+ 294:	21 50       	subi	r18, 0x01	; 1
+ 296:	80 40       	sbci	r24, 0x00	; 0
+ 298:	90 40       	sbci	r25, 0x00	; 0
+ 29a:	e1 f7       	brne	.-8      	; 0x294 <main+0x4a>
+ 29c:	00 c0       	rjmp	.+0      	; 0x29e <main+0x54>
+ 29e:	00 00       	nop
+			_delay_ms(100); // Debounce
+			if (!TOGGLE_BUTTON) {
+ 2a0:	32 9b       	sbis	0x06, 2	; 6
+				toggle_display_mode();
+ 2a2:	0e 94 b3 00 	call	0x166	; 0x166 <toggle_display_mode>
+			}
+		}
+		if (!STOP_ALARM_BUTTON) {
+ 2a6:	34 99       	sbic	0x06, 4	; 6
+ 2a8:	0c c0       	rjmp	.+24     	; 0x2c2 <main+0x78>
+ 2aa:	2f ef       	ldi	r18, 0xFF	; 255
+ 2ac:	80 e7       	ldi	r24, 0x70	; 112
+ 2ae:	92 e0       	ldi	r25, 0x02	; 2
+ 2b0:	21 50       	subi	r18, 0x01	; 1
+ 2b2:	80 40       	sbci	r24, 0x00	; 0
+ 2b4:	90 40       	sbci	r25, 0x00	; 0
+ 2b6:	e1 f7       	brne	.-8      	; 0x2b0 <main+0x66>
+ 2b8:	00 c0       	rjmp	.+0      	; 0x2ba <main+0x70>
+ 2ba:	00 00       	nop
+			_delay_ms(50); // Debounce
+			if (!STOP_ALARM_BUTTON) {
+ 2bc:	34 9b       	sbis	0x06, 4	; 6
+				stop_alarm();
+ 2be:	0e 94 d6 00 	call	0x1ac	; 0x1ac <stop_alarm>
+			}
+		}
+		if (!MODE_BUTTON) {
+ 2c2:	33 99       	sbic	0x06, 3	; 6
+ 2c4:	0c c0       	rjmp	.+24     	; 0x2de <main+0x94>
+ 2c6:	2f ef       	ldi	r18, 0xFF	; 255
+ 2c8:	81 ee       	ldi	r24, 0xE1	; 225
+ 2ca:	94 e0       	ldi	r25, 0x04	; 4
+ 2cc:	21 50       	subi	r18, 0x01	; 1
+ 2ce:	80 40       	sbci	r24, 0x00	; 0
+ 2d0:	90 40       	sbci	r25, 0x00	; 0
+ 2d2:	e1 f7       	brne	.-8      	; 0x2cc <main+0x82>
+ 2d4:	00 c0       	rjmp	.+0      	; 0x2d6 <main+0x8c>
+ 2d6:	00 00       	nop
+			_delay_ms(100); // Debounce
+			if (!MODE_BUTTON) {
+ 2d8:	33 9b       	sbis	0x06, 3	; 6
+				change_mode();
+ 2da:	0e 94 fb 00 	call	0x1f6	; 0x1f6 <change_mode>
+			}
+		}
+
+		if (mode == 0) {
+ 2de:	80 91 0e 01 	lds	r24, 0x010E	; 0x80010e <mode>
+ 2e2:	90 91 0f 01 	lds	r25, 0x010F	; 0x80010f <mode+0x1>
+ 2e6:	89 2b       	or	r24, r25
+ 2e8:	01 f5       	brne	.+64     	; 0x32a <main+0xe0>
+			int display_temp = display_mode == 0 ? temperature : (temperature * 9 / 5) + 32;
+ 2ea:	80 91 0c 01 	lds	r24, 0x010C	; 0x80010c <display_mode>
+ 2ee:	90 91 0d 01 	lds	r25, 0x010D	; 0x80010d <display_mode+0x1>
+ 2f2:	89 2b       	or	r24, r25
+ 2f4:	99 f0       	breq	.+38     	; 0x31c <main+0xd2>
+ 2f6:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <temperature>
+ 2fa:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <temperature+0x1>
+ 2fe:	9c 01       	movw	r18, r24
+ 300:	22 0f       	add	r18, r18
+ 302:	33 1f       	adc	r19, r19
+ 304:	22 0f       	add	r18, r18
+ 306:	33 1f       	adc	r19, r19
+ 308:	22 0f       	add	r18, r18
+ 30a:	33 1f       	adc	r19, r19
+ 30c:	82 0f       	add	r24, r18
+ 30e:	93 1f       	adc	r25, r19
+ 310:	be 01       	movw	r22, r28
+ 312:	0e 94 9e 01 	call	0x33c	; 0x33c <__divmodhi4>
+ 316:	cb 01       	movw	r24, r22
+ 318:	80 96       	adiw	r24, 0x20	; 32
+ 31a:	04 c0       	rjmp	.+8      	; 0x324 <main+0xda>
+ 31c:	80 91 10 01 	lds	r24, 0x0110	; 0x800110 <temperature>
+ 320:	90 91 11 01 	lds	r25, 0x0111	; 0x800111 <temperature+0x1>
+			displayNumber(display_temp); // Display temperature
+ 324:	0e 94 93 00 	call	0x126	; 0x126 <displayNumber>
+ 328:	02 c0       	rjmp	.+4      	; 0x32e <main+0xe4>
+			} else {
+			// Implement LED range indication logic
+			update_leds();
+ 32a:	0e 94 0a 01 	call	0x214	; 0x214 <update_leds>
+ 32e:	8f e9       	ldi	r24, 0x9F	; 159
+ 330:	9f e0       	ldi	r25, 0x0F	; 15
+ 332:	01 97       	sbiw	r24, 0x01	; 1
+ 334:	f1 f7       	brne	.-4      	; 0x332 <main+0xe8>
+ 336:	00 c0       	rjmp	.+0      	; 0x338 <main+0xee>
+ 338:	00 00       	nop
+ 33a:	8b cf       	rjmp	.-234    	; 0x252 <main+0x8>
+
+0000033c <__divmodhi4>:
+ 33c:	97 fb       	bst	r25, 7
+ 33e:	07 2e       	mov	r0, r23
+ 340:	16 f4       	brtc	.+4      	; 0x346 <__divmodhi4+0xa>
+ 342:	00 94       	com	r0
+ 344:	07 d0       	rcall	.+14     	; 0x354 <__divmodhi4_neg1>
+ 346:	77 fd       	sbrc	r23, 7
+ 348:	09 d0       	rcall	.+18     	; 0x35c <__divmodhi4_neg2>
+ 34a:	0e 94 b2 01 	call	0x364	; 0x364 <__udivmodhi4>
+ 34e:	07 fc       	sbrc	r0, 7
+ 350:	05 d0       	rcall	.+10     	; 0x35c <__divmodhi4_neg2>
+ 352:	3e f4       	brtc	.+14     	; 0x362 <__divmodhi4_exit>
+
+00000354 <__divmodhi4_neg1>:
+ 354:	90 95       	com	r25
+ 356:	81 95       	neg	r24
+ 358:	9f 4f       	sbci	r25, 0xFF	; 255
+ 35a:	08 95       	ret
+
+0000035c <__divmodhi4_neg2>:
+ 35c:	70 95       	com	r23
+ 35e:	61 95       	neg	r22
+ 360:	7f 4f       	sbci	r23, 0xFF	; 255
+
+00000362 <__divmodhi4_exit>:
+ 362:	08 95       	ret
+
+00000364 <__udivmodhi4>:
+ 364:	aa 1b       	sub	r26, r26
+ 366:	bb 1b       	sub	r27, r27
+ 368:	51 e1       	ldi	r21, 0x11	; 17
+ 36a:	07 c0       	rjmp	.+14     	; 0x37a <__udivmodhi4_ep>
+
+0000036c <__udivmodhi4_loop>:
+ 36c:	aa 1f       	adc	r26, r26
+ 36e:	bb 1f       	adc	r27, r27
+ 370:	a6 17       	cp	r26, r22
+ 372:	b7 07       	cpc	r27, r23
+ 374:	10 f0       	brcs	.+4      	; 0x37a <__udivmodhi4_ep>
+ 376:	a6 1b       	sub	r26, r22
+ 378:	b7 0b       	sbc	r27, r23
+
+0000037a <__udivmodhi4_ep>:
+ 37a:	88 1f       	adc	r24, r24
+ 37c:	99 1f       	adc	r25, r25
+ 37e:	5a 95       	dec	r21
+ 380:	a9 f7       	brne	.-22     	; 0x36c <__udivmodhi4_loop>
+ 382:	80 95       	com	r24
+ 384:	90 95       	com	r25
+ 386:	bc 01       	movw	r22, r24
+ 388:	cd 01       	movw	r24, r26
+ 38a:	08 95       	ret
+
+0000038c <_exit>:
+ 38c:	f8 94       	cli
+
+0000038e <__stop_program>:
+ 38e:	ff cf       	rjmp	.-2      	; 0x38e <__stop_program>
